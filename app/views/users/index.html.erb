@@ -1,0 +1,69 @@
+<br/>
+<div ng-controller="UsersController">
+
+  <div class="col-md-10">
+    <form class="tab-pane active form-horizontal" id="first" name="userForm" novalidate ng-submit="saveUser()">
+      <h3 class="block">Add new user</h3>
+      <div><%= render 'form' %></div>
+    </form>
+  </div>
+
+ <modal title="Address details" visible="showModal">
+   <div class="row">
+     <div class="col-md-12">
+       <table class="table table-striped">
+         <tr>
+           <th>Address 1</th>
+           <th>Address 2</th>
+           <th>City</th>
+           <th>State</th>
+           <th>Country</th>
+           <th>ZipCode</th>
+         </tr>
+         <tr ng-hide="user.addresses.length" >
+           <td colspan="5">No address found, Please create one.</td>
+         </tr>
+         <tr ng-show="user.addresses.length" ng-repeat="address in user.addresses">
+           <td>{{address.street1}}</td>
+           <td>{{address.street2}}</td>
+           <td>{{address.city}}</td>
+           <td>{{address.state}}</td>
+           <td>{{address.country}}</td>
+           <td>{{address.zip_code}}</td>
+         </tr>
+       </table>
+     </div>
+   </div>
+ </modal>
+
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="block">Users</h3>
+    <table class="table table-striped">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th></th>
+      </tr>
+      <tr ng-hide="users.length" >
+        <td colspan="5">No users found, Please create one.</td>
+      </tr>
+      <tr ng-show="users.length" ng-repeat="user in users">
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.age}}</td>
+        <td>{{user.phone}}</td>
+        <td><button type="view" class="btn btn-primary" ng-click="toggleModal($index)">View</button></td>
+        <td>
+          <a ng-click="editUser($index)">Edit</a> | <a href="" ng-click="deleteUser($index)">Remove</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
