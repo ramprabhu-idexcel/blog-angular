@@ -1,0 +1,26 @@
+<script type="text/ng-template"  id="tree_item_renderer.html">
+  {{data.name}}
+  <ul ng-show="data.show">
+    <li ng-repeat="data in data.nodes" ng-include="'tree_item_renderer.html'"></li>
+  </ul>
+</script>
+
+<div ng-controller="TreeController" ng-cloak>
+  <div class="input-append">
+    <input class="span2"  ng-model="search" id="inputIcon" type="text" />
+    <span class="add-on"><i class="icon-search"></i></span>
+  </div>
+  <div>
+    <strong  ng-show="search.length > 0">Matching results: {{ (displayTree|filter:search).length }}</strong>
+    <ul>
+      <li ng-repeat="data in displayTree | filter:search" ng-include="'tree_item_renderer.html'"></li>
+    </ul>
+  </div>
+</div>
+
+<style>
+    body {
+        padding: 30px;
+    }
+</style>
+

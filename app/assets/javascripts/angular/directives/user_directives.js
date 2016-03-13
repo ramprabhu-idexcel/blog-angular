@@ -28,3 +28,33 @@ myapp.directive('modal', function () {
         }
     };
 });
+
+
+/*** constructor function
+
+function Calculator(firstVar,secondVar) {
+    this.firstVar = firstVar;
+    this.secondVar = secondVar;
+    this.sum = function() { return this.firstVar + this.secondVar }
+}
+
+var obj1 = new Calculator(10,20);
+
+obj1.sum();
+
+var obj2 = new Calculator(20,30);
+
+obj2.sum();
+
+**/
+
+/*
+var foo = { fooVariable: "Foo Variable",
+            fooMethod: function(){
+               console.log(this.fooVariable;)
+            }};
+
+
+var bar = { barVariable: "Bar Variable" };
+
+bar.__proto__ = foo; */

@@ -1,0 +1,39 @@
+<div ng-controller="TreesController">
+<div agency-locking="" class="content-border mal agency-locking">
+  <div class="content-title content-title-negotiation">
+    <h2 class="pull-left">
+      Agency Property Locks
+    </h2>
+    <button class="button-success button-sm pull-right">Unlock</button><button class="button-success button-sm pull-right">Lock</button>
+  </div>
+  <div class="table-heading pvs pll flex-center group-list-header alt right-align">
+    <h6 class="em-alt mrl group-list-heading">
+      Lock by Agency, Selling Vertical or Property
+    </h6>
+  </div>
+  <div class="cf table-container">
+    <table class="report content-border width-100 type-sm">
+      <thead>
+      <th class="width-55 agency-inputs">
+        <input class="pull-left" placeholder="Agency" type="text" /><input class="pull-left" placeholder="Selling Vertical" type="text" /><input class="pull-left" placeholder="Property" type="text" /><select2 class="select2 mrm mtn pull-left" options="ctrl.statuses" placeholder="Status"></select2>
+      </th>
+      <th class="width-15">
+        Ask
+      </th>
+      <th class="width-15">
+        Current Projection
+      </th>
+      <th class="width-15">
+        Registration
+      </th>
+      </thead>
+    <div agency-table-row="" collection="tableData"></div>
+    </table>
+  </div>
+</div>
+</div>
+
+
+
+
+

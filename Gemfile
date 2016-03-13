@@ -29,6 +29,8 @@ gem 'angular-ui-bootstrap-rails' #for bootstrap UI
 gem 'bootstrap-sass'
 
 gem 'responders'
+
+gem 'slim'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,0 +1,25 @@
+//Specific Agency Locking Styles
+
+.agency-locking .content-title {
+  overflow:hidden;
+}
+
+.agency-locking .content-title button {
+  margin-left:5px;
+}
+
+.agency-locking .agency-inputs input{
+  width: 20% !important;
+  margin-right:5px;
+}
+
+.agency-locking table tr.row-summary td {
+  background: #E9F5FA !important;
+}
+
+.agency-locking div[agency-table-row] {
+  padding-left: 10px;
+}
+.agency-locking div[agency-table-row] > div[agency-table-row]>div>div {
+  padding-left: 10px;
+}
