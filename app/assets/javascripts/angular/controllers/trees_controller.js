@@ -27,9 +27,9 @@ function agencyTableRowDirective($compile){
         template: "<div ng-repeat='item in collection' item='item'>" +
         "<div class='row {{item.type}}'>" +
         "<div class='col-md-6' ng-click='showChilds(item)'>{{item.name}}</div>" +
-        "<div class='col-md-2'><input type='checkbox'  ng-model='item.ask' /></div>" +
-        "<div class='col-md-2'><input type='checkbox' ng-model='item.current_projection' /></div>" +
-        "<div class='col-md-2'> <input type='checkbox' ng-model='item.registration' /></div>" +
+        "<div class='col-md-2'><input type='checkbox'  ng-model='item.ask' ng-click='selectItems(item)'/></div>" +
+        "<div class='col-md-2'><input type='checkbox' ng-model='item.current_projection' ng-click='selectItems(item,current_projection)' /></div>" +
+        "<div class='col-md-2'> <input type='checkbox' ng-model='item.registration' ng-click='selectItems(item,registration)'/></div>" +
         "</div>" +
         "</div>",
         scope: {
@@ -75,6 +75,24 @@ function itemDirective($compile){
                for (i in item.children) {
                         item.children[i].active = !item.children[i].active;
                     }
+            };
+
+            $scope.selectItems = function(item,type) {
+
+                console.log(type);
+
+              for(i in item.children) {
+                  item.children[i].ask = !item.children[i].ask;
+                  if(type == 'ask') {
+
+                  }
+                  else if(type == 'current_projection') {
+                      item.children[i].current_projection = !item.children[i].current_projection;
+                  }
+                  else if(type == 'registration') {
+                      item.children[i].registration = !item.children[i].registration;
+                  }
+              }
             }
 
         }
