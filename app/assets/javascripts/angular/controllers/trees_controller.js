@@ -26,7 +26,7 @@ function agencyTableRowDirective($compile){
         replace:true,
         template: "<div ng-repeat='item in collection' item='item'>" +
         "<div class='row {{item.type}}'>" +
-        "<div class='col-md-6' ng-click='showChilds(item)'>{{item.name}}</div>" +
+        "<div class='col-md-6' ng-click='showChilds(item)'><i ng-class='getClass(item)'></i> {{item.name}}</div>" +
         "<div class='col-md-2'><input type='checkbox'  ng-model='item.ask' ng-click='selectItems(item)'/></div>" +
         "<div class='col-md-2'><input type='checkbox' ng-model='item.current_projection' ng-click='selectItems(item,current_projection)' /></div>" +
         "<div class='col-md-2'> <input type='checkbox' ng-model='item.registration' ng-click='selectItems(item,registration)'/></div>" +
@@ -65,9 +65,10 @@ function itemDirective($compile){
             }
        },
         controller: function($scope, $element, $attrs) {
-            $scope.getClass = function(type) {
-                if($scope.item.children) {
-                    return 'sms-glyph-arrow_triangle-right';
+
+            $scope.getClass = function(item) {
+                if(item.children && item.children.length >= 1) {
+                    return 'glyphicon glyphicon-triangle-right';
                 }
             };
 
@@ -78,9 +79,6 @@ function itemDirective($compile){
             };
 
             $scope.selectItems = function(item,type) {
-
-                console.log(type);
-
               for(i in item.children) {
                   item.children[i].ask = !item.children[i].ask;
                   if(type == 'ask') {
