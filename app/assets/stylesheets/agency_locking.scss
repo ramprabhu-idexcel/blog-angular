@@ -1,5 +1,9 @@
 //Specific Agency Locking Styles
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap/theme";
+
 .agency-locking .content-title {
   overflow:hidden;
 }
@@ -23,3 +27,4 @@
 .agency-locking div[agency-table-row] > div[agency-table-row]>div>div {
   padding-left: 10px;
 }
+

@@ -24,14 +24,14 @@ function agencyTableRowDirective($compile){
     return {
         restrict: "A",
         replace:true,
-        template: "<div ng-repeat='item in collection' item='item'>" +
-        "<div class='row {{item.type}}'>" +
-        "<div class='col-md-6' ng-click='showChilds(item)'><i ng-class='getClass(item)'></i> {{item.name}}</div>" +
-        "<div class='col-md-2'><input type='checkbox'  ng-model='item.ask' ng-click='selectItems(item)'/></div>" +
-        "<div class='col-md-2'><input type='checkbox' ng-model='item.current_projection' ng-click='selectItems(item,current_projection)' /></div>" +
-        "<div class='col-md-2'> <input type='checkbox' ng-model='item.registration' ng-click='selectItems(item,registration)'/></div>" +
-        "</div>" +
-        "</div>",
+        template: '<div ng-repeat="item in collection" item="item">' +
+        '<div class="row {{item.type}}">' +
+        '<div class="col-md-6" ng-click="showChilds(item)"><i ng-class=" { \'glyphicon glyphicon-triangle-right\': item.isCollapsed, \'glyphicon glyphicon-triangle-bottom\': !item.isCollapsed } "></i> {{item.name}}</div>' +
+        '<div class="col-md-2"><input type="checkbox"  ng-model="item.ask" ng-click="selectItems(item)"/></div>' +
+        '<div class="col-md-2"><input type="checkbox" ng-model="item.current_projection" ng-click="selectItems(item,current_projection)" /></div>' +
+        '<div class="col-md-2"> <input type="checkbox" ng-model="item.registration" ng-click="selectItems(item,registration)"/></div>' +
+        '</div>' +
+        '</div>',
         scope: {
             collection: '='
         }
@@ -62,6 +62,11 @@ function itemDirective($compile){
                 if(scope.item.type == 'parent-agency' || scope.item.type == 'child-agency') {
                     scope.item.active = true;
                 }
+
+                if(scope.item.children && scope.item.children.length > 1 && scope.item.type != 'parent-agency') {
+                    scope.item.isCollapsed = 'glyphicon glyphicon-triangle-right'
+                }
+
             }
        },
         controller: function($scope, $element, $attrs) {
@@ -73,6 +78,7 @@ function itemDirective($compile){
             };
 
             $scope.showChilds = function(item) {
+               item.isCollapsed = !item.isCollapsed;
                for (i in item.children) {
                         item.children[i].active = !item.children[i].active;
                     }
@@ -96,3 +102,15 @@ function itemDirective($compile){
         }
     }
 }
+
+
+/*****************
+
+ '<div ng-repeat="item in collection" item="item">
+ <div class="row {{item.type}}"> <div class="col-md-6" ng-click="showChilds(item)"><i ng-class="getClass(item)"></i> {{item.name}}</div>
+ <div class="col-md-2"><input type="checkbox"  ng-model="item.ask" ng-click="selectItems(item)"/></div>
+ <div class="col-md-2"><input type="checkbox" ng-model="item.current_projection" ng-click="selectItems(item,current_projection)" /></div>
+ <div class="col-md-2"> <input type="checkbox" ng-model="item.registration" ng-click="selectItems(item,registration)"/></div></div></div>;,
+
+
+ ****************/
