@@ -26,7 +26,7 @@ function agencyTableRowDirective($compile){
         replace:true,
         template: '<div ng-repeat="item in collection" item="item">' +
         '<div class="row {{item.type}}">' +
-        '<div class="col-md-6" ng-click="showChilds(item)"><i ng-class="item.isCollapsed && \'glyphicon glyphicon-triangle-right\' || item.isNotCollapsed && \'glyphicon glyphicon-triangle-bottom\'"></i> {{item.name}}</div>' +
+        '<div class="col-md-6" ng-click="showChilds(item)"><i ng-class="item.isCollapsed && \'glyphicon glyphicon-triangle-right\' || item.isExpanded && \'glyphicon glyphicon-triangle-bottom\'"></i> {{item.name}}</div>' +
         '<div class="col-md-2"><input type="checkbox"  ng-model="item.ask" ng-click="selectItems(item)"/></div>' +
         '<div class="col-md-2"><input type="checkbox" ng-model="item.current_projection" ng-click="selectItems(item,current_projection)" /></div>' +
         '<div class="col-md-2"> <input type="checkbox" ng-model="item.registration" ng-click="selectItems(item,registration)"/></div>' +
@@ -71,15 +71,9 @@ function itemDirective($compile){
        },
         controller: function($scope, $element, $attrs) {
 
-            $scope.getClass = function(item) {
-                if(item.children && item.children.length >= 1) {
-                    return 'glyphicon glyphicon-triangle-right';
-                }
-            };
-
             $scope.showChilds = function(item) {
                item.isCollapsed = !item.isCollapsed;
-               item.isNotCollapsed = !item.isNotCollapsed;
+               item.isExpanded = !item.isExpanded;
                 for (i in item.children) {
                         item.children[i].active = !item.children[i].active;
                     }
