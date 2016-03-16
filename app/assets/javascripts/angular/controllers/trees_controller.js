@@ -27,14 +27,13 @@ function agencyTableRowDirective($compile){
         template: '<div ng-repeat="item in collection" item="item">' +
         '<div class="row {{item.type}}">' +
         '<div class="col-md-6" ng-click="showChilds(item)"><i ng-class="item.isCollapsed && \'glyphicon glyphicon-triangle-right\' || item.isExpanded && \'glyphicon glyphicon-triangle-bottom\'"></i> {{item.name}}</div>' +
-        '<div class="col-md-2"><input type="checkbox"  ng-model="item.ask" item_ask="ask" ng-click="selectItems(item,\'ask\')"/></div>' +
+        '<div class="col-md-2"><input type="checkbox"  ng-model="item.ask" ng-click="selectItems(item,\'ask\')"/></div>' +
         '<div class="col-md-2"><input type="checkbox" ng-model="item.current_projection" ng-click="selectItems(item,\'current_projection\')" /></div>' +
         '<div class="col-md-2"> <input type="checkbox" ng-model="item.registration" ng-click="selectItems(item,\'registration\')"/></div>' +
         '</div>' +
         '</div>',
         scope: {
-            collection: '=',
-            itemAsk: '='
+            collection: '='
         }
 
     };
